@@ -1,0 +1,35 @@
+# CUSTOMERS CALLS #
+@base_URL=http://localhost:3000/api/customers
+
+get {{base_URL}}
+
+###
+@objId1=626fb3810a6e8b97afc297b8
+get {{base_URL}}/{{objId1}}
+Content-Type: application/json
+
+###
+post {{base_URL}}
+Content-Type: application/json
+
+{
+    "name": "vince", 
+    "address": "hillesteenweg 18",
+    "phone": "0485/784459"
+}
+
+###
+@objId2=6277c1e1697740cb17d19821
+put {{base_URL}}/{{objId2}}
+Content-Type: application/json
+
+{
+    "name": "mario",
+    "address": "torenstraat 48",
+    "phone": "0485/55.55.55"
+}
+
+###
+@objId3=6277c1e1697740cb17d19821
+delete {{base_URL}}/{{objId3}}
+Content-Type: application/json
