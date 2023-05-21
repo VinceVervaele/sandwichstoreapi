@@ -1,0 +1,20 @@
+{
+  "name": "ti-eind-assignment-2223-project-vincevervaele",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VivesMDima/ti-eind-assignment-2223-project-VinceVervaele.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VivesMDima/ti-eind-assignment-2223-project-VinceVervaele/issues"
+  },
+  "homepage": "https://github.com/VivesMDima/ti-eind-assignment-2223-project-VinceVervaele#readme"
+}
