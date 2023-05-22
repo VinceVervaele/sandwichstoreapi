@@ -1,0 +1,41 @@
+# CUSTOMERS CALLS #
+@base_URL=http://localhost:3000/api/drinks
+
+get {{base_URL}}
+
+###
+@objId1=646b4c9759ca45433c3b2917
+get {{base_URL}}/{{objId1}}
+Content-Type: application/json
+
+###
+post {{base_URL}}
+Content-Type: application/json
+
+{
+    "name": "Broodje garnaalsalade", 
+    "price": "4.99",
+    "ingredients": ["Garnaalsalade", "Sla", "Ei", "Tomaat"]
+}
+
+###
+@objId2=646b4c9759ca45433c3b2917
+put {{base_URL}}/{{objId2}}
+Content-Type: application/json
+
+{
+    "name": "Broodje garnaalsalade",
+    "price": "6.45",
+    "ingredients": [
+    "Garnaalsalade",
+    "Sla",
+    "Ei",
+    "Tomaat",
+    "Kaas"
+  ]
+}
+
+###
+@objId3=646b4c9759ca45433c3b2917
+delete {{base_URL}}/{{objId3}}
+Content-Type: application/json  
