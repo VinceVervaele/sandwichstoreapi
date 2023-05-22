@@ -4,7 +4,7 @@
 get {{base_URL}}
 
 ###
-@objId1=646b4c9759ca45433c3b2917
+@objId1=646bb67fe0e6b6f96dfad6a6
 get {{base_URL}}/{{objId1}}
 Content-Type: application/json
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-@objId2=646b4c9759ca45433c3b2917
+@objId2=646bb67fe0e6b6f96dfad6a6
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
 
@@ -36,6 +36,6 @@ Content-Type: application/json
 }
 
 ###
-@objId3=646b4c9759ca45433c3b2917
+@objId3=646bb67fe0e6b6f96dfad6a6
 delete {{base_URL}}/{{objId3}}
 Content-Type: application/json  

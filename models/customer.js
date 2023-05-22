@@ -19,6 +19,12 @@ const Customer = mongoose.model('Customer', new mongoose.Schema({
     required: true,
     minlength: 5,
     maxlength: 50
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 8,
+    maxlength: 50
   }
 }));
 
@@ -26,7 +32,8 @@ function validateCustomer(customer) {
   const schema = Joi.object({
     name: Joi.string().min(5).max(50).required(),
     address: Joi.string().min(5).max(125).required(),
-    phone: Joi.string().min(5).max(50).required()
+    phone: Joi.string().min(5).max(50).required(),
+    name: Joi.string().min(8).max(50).required(),
   });
 
   return schema.validate(customer);

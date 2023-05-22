@@ -1,57 +1,89 @@
-const {Sandwich, validate} = require('../models/sandwich'); 
-const mongoose = require('mongoose');
-const express = require('express');
+const { Sandwich, validate } = require("../models/sandwich");
+const mongoose = require("mongoose");
+const express = require("express");
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  const sandwiches = await Sandwich.find().sort('name');
-  res.send(sandwiches);
+router.get("/", async (req, res, next) => {
+  try {
+    const sandwiches = await Sandwich.find().sort("name");
+    res.send(sandwiches);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.post('/', async (req, res) => {
-  const { error } = validate(req.body); 
-  if (error) return res.status(400).send(error.details[0].message);
+router.post("/", async (req, res, next) => {
+  try {
+    const { error } = validate(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
-  let sandwich = new Sandwich({ 
-    name: req.body.name,
-    price: req.body.price,
-    ingredients: req.body.ingredients
-  });
-  sandwich = await sandwich.save();
-  
-  res.send(sandwich);
+    let sandwich = new Sandwich({
+      name: req.body.name,
+      price: req.body.price,
+      ingredients: req.body.ingredients,
+    });
+    sandwich = await sandwich.save();
+
+    res.send(sandwich);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.put('/:id', async (req, res) => {
-  const { error } = validate(req.body); 
-  if (error) return res.status(400).send(error.details[0].message);
+router.put("/:id", async (req, res, next) => {
+  try {
+    const { error } = validate(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
-  const sandwich = await Sandwich.findByIdAndUpdate(req.params.id,
-    { 
+    const sandwich = await Sandwich.findByIdAndUpdate(
+      req.params.id,
+      {
         name: req.body.name,
         price: req.body.price,
-        ingredients: req.body.ingredients
-    }, { new: true });
+        ingredients: req.body.ingredients,
+      },
+      { new: true }
+    );
 
-  if (!sandwich) return res.status(404).send('The sandwich with the given ID was not found.');
-  
-  res.send(sandwich);
+    if (!sandwich)
+      return res
+        .status(404)
+        .send("The sandwich with the given ID was not found.");
+
+    res.send(sandwich);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.delete('/:id', async (req, res) => {
-  const sandwich = await Sandwich.findByIdAndRemove(req.params.id);
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const sandwich = await Sandwich.findByIdAndRemove(req.params.id);
 
-  if (!sandwich) return res.status(404).send('The sandwich with the given ID was not found.');
+    if (!sandwich)
+      return res
+        .status(404)
+        .send("The sandwich with the given ID was not found.");
 
-  res.send(sandwich);
+    res.send(sandwich);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get('/:id', async (req, res) => {
-  const sandwich = await Sandwich.findById(req.params.id);
+router.get("/:id", async (req, res, next) => {
+  try {
+    const sandwich = await Sandwich.findById(req.params.id);
 
-  if (!sandwich) return res.status(404).send('The sandwich with the given ID was not found.');
+    if (!sandwich)
+      return res
+        .status(404)
+        .send("The sandwich with the given ID was not found.");
 
-  res.send(sandwich);
+    res.send(sandwich);
+  } catch (err) {
+    next(err);
+  }
 });
 
-module.exports = router; 
+module.exports = router;
