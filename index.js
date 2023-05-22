@@ -17,6 +17,14 @@ app.use('/api/customers', customers);
 app.use('/api/sandwiches', sandwiches);
 app.use('/api/drinks', drinks);
 app.use('/api/orders', orders);
+app.use((error, res) => {
+  const statusCode = error.statusCode || 500;
+  res.status(statusCode).json({
+    error: {
+      message: error.message || "Internal Server Error",
+    },
+  });
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
