@@ -4,7 +4,7 @@
 get {{base_URL}}
 
 ###
-@objId1=626fb3810a6e8b97afc297b8
+@objId1=646b4c9759ca45433c3b2917
 get {{base_URL}}/{{objId1}}
 Content-Type: application/json
 
@@ -13,23 +13,29 @@ post {{base_URL}}
 Content-Type: application/json
 
 {
-    "name": "Broodje garnaalsalade", 
-    "price": "4.99",
+    "name": "Baguette", 
+    "price": 18,
     "ingredients": ["Garnaalsalade", "Sla", "Ei", "Tomaat"]
 }
 
 ###
-@objId2=6469df8715420e1265ffad18
+@objId2=646b4c9759ca45433c3b2917
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
 
 {
-    "name": "mario",
-    "address": "torenstraat 48",
-    "phone": "0485/55.55.55"
+    "name": "Broodje garnaalsalade",
+    "price": "6.45",
+    "ingredients": [
+    "Garnaalsalade",
+    "Sla",
+    "Ei",
+    "Tomaat",
+    "Kaas"
+  ]
 }
 
 ###
-@objId3=6469df466f7d3138e519652c
+@objId3=646b4c9759ca45433c3b2917
 delete {{base_URL}}/{{objId3}}
 Content-Type: application/json  
