@@ -26,10 +26,10 @@ function validateSandwich(sandwich) {
   const schema = Joi.object({
     name: Joi.string().min(5).max(100).required(),
     price: Joi.number().min(0).max(10).required(),
-    ingredients: Joi.array().items(Joi.string().min(5).max(50).required())
+    ingredients: Joi.array().items(Joi.string().min(1).max(50).required())
   });
 
-  return schema.validate(customer);
+  return schema.validate(sandwich);
 }
 
 exports.Sandwich = Sandwich; 

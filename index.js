@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const customers = require('./routes/customer');
+const sandwiches = require('./routes/sandwich');
 const app = express();
 
 mongoose.connect('mongodb://127.0.0.1:27017/broodjeszaak')
@@ -9,6 +10,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/broodjeszaak')
 
 app.use(express.json());
 app.use('/api/customers', customers);
+app.use('/api/sandwiches', sandwiches);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
