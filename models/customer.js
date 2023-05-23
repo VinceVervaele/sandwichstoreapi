@@ -50,8 +50,7 @@ function validateCustomer(customer) {
     address: Joi.string().min(5).max(125).required(),
     phone: Joi.string().min(5).max(50).required(),
     email: Joi.string().min(6).max(125).required().email(),
-    password: Joi.string().min(8).max(250).required(),
-    isAdmin: Joi.boolean().required()
+    password: Joi.string().min(8).max(250).required()
   });
 
   return schema.validate(customer);

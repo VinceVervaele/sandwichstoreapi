@@ -17,9 +17,8 @@ Content-Type: application/json
     "name": "vince", 
     "address": "hillesteenweg 18",
     "phone": "0485/784459",
-    "email": "vincevdaaa@gmail.com",
-    "password": "vince123",
-    "isAdmin": false
+    "email": "vincevdba@gmail.com",
+    "password": "vince123"
 }
 
 ###
@@ -33,8 +32,23 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMjZhZTY1NWU4Y
     "address": "hilledsteenweg 19",
     "phone": "0485/784459",
     "email": "vincevdd@gmail.com",
+    "password": "vince123"
+}
+
+###
+
+@objId2=646d260225c60830dc9416c7
+put {{base_URL}}/{{objId2}}/isAdmin
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMmMwMDY1M2RlYTM3NTk1YzY2ZDUiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0ODc2Mjg4fQ.sX0hTrkFFy4gA_XGaY3OUroZjgT3ndnOVK3rwK_Rqhc
+
+{
+    "name": "vince", 
+    "address": "hilledsteenweg 19",
+    "phone": "0485/784459",
+    "email": "vincevdd@gmail.com",
     "password": "vince123",
-    "isAdmin" : false
+    "isAdmin": false
 }
 
 ###
