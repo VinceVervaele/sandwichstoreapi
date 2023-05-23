@@ -2,6 +2,12 @@ const { Customer, validate } = require("../models/customer");
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const auth = require('../middleware/auth');
+const dotenv = require('dotenv');
+const admin = require("../middleware/admin")
+const jwt = require('jsonwebtoken');
+
 
 router.get("/", async (req, res, next) => {
   try {
@@ -17,20 +23,27 @@ router.post("/", async (req, res, next) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let customer = new Customer({
+    let customer = await Customer.findOne({email: req.body.email});
+    if(customer) res.status(400).send("Customer already exists")
+
+    customer = new Customer({
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,
+      email: req.body.email,
     });
+    const salt = await bcrypt.genSalt(10);
+    customer.password = await bcrypt.hash(req.body.password, salt);
     customer = await customer.save();
 
-    res.send(customer);
+    const token = customer.generateAuthToken();
+    res.header('x-auth-token', token).send(customer);
   } catch (err) {
     next(err);
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", auth, async (req, res, next) => {
   try {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -41,6 +54,8 @@ router.put("/:id", async (req, res, next) => {
         name: req.body.name,
         address: req.body.address,
         phone: req.body.phone,
+        email: req.body.email,
+        password: req.body.password
       },
       { new: true }
     );

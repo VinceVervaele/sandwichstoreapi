@@ -15,18 +15,23 @@ Content-Type: application/json
 {
     "name": "vince", 
     "address": "hillesteenweg 18",
-    "phone": "0485/784459"
+    "phone": "0485/784459",
+    "email": "vincevddddddddd@gmail.com",
+    "password": "vince123"
 }
 
 ###
-@objId2=646bb6339c1ac02e35e19755
+@objId2=646bfa1d790e83f819c25345
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
+x-auth-token: eyJhbiOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZiZjkxODFjNGZkMjdlYTExZTJhMDYiLCJpYXQiOjE2ODQ4MDA3NTV9.IwYPe4plk_zdQHzjDxYefytCLpaTKtynbJn69BqA2nA
 
 {
-    "name": "mario",
-    "address": "torenstraat 48",
-    "phone": "0485/55.55.55"
+    "name": "vince", 
+    "address": "hillesteenweg 19",
+    "phone": "0485/784459",
+    "email": "vincevd@gmail.com",
+    "password": "vince123"
 }
 
 ###
