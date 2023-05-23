@@ -1,6 +1,8 @@
 const { Sandwich, validate } = require("../models/sandwich");
 const mongoose = require("mongoose");
 const express = require("express");
+const auth = require('../middleware/auth');
+const admin = require("../middleware/admin");
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
@@ -12,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", [auth, admin], async (req, res, next) => {
   try {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -30,7 +32,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", [auth, admin] , async (req, res, next) => {
   try {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -56,7 +58,7 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", [auth, admin],  async (req, res, next) => {
   try {
     const sandwich = await Sandwich.findByIdAndRemove(req.params.id);
 
@@ -71,7 +73,7 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id",  async (req, res, next) => {
   try {
     const sandwich = await Sandwich.findById(req.params.id);
 

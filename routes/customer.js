@@ -4,12 +4,12 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const auth = require('../middleware/auth');
+const admin = require("../middleware/admin");
 const dotenv = require('dotenv');
-const admin = require("../middleware/admin")
 const jwt = require('jsonwebtoken');
 
 
-router.get("/", async (req, res, next) => {
+router.get("/", [auth, admin], async (req, res, next) => {
   try {
     const customers = await Customer.find().sort("name");
     res.send(customers);
@@ -34,6 +34,7 @@ router.post("/", async (req, res, next) => {
     });
     const salt = await bcrypt.genSalt(10);
     customer.password = await bcrypt.hash(req.body.password, salt);
+    customer.isAdmin = req.isAdmin;
     customer = await customer.save();
 
     const token = customer.generateAuthToken();
@@ -71,7 +72,7 @@ router.put("/:id", auth, async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", [auth, admin], async (req, res, next) => {
   try {
     const customer = await Customer.findByIdAndRemove(req.params.id);
 
@@ -86,7 +87,7 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", [auth, admin], async (req, res, next) => {
   try {
     const customer = await Customer.findById(req.params.id);
 

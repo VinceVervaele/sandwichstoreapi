@@ -1,8 +1,9 @@
 # CUSTOMERS CALLS #
 @base_URL=http://localhost:3000/api/customers
 
-get {{base_URL}}
 
+get {{base_URL}}
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMjc0NTY0NTMyZDc0MTJjZjRkYmMiLCJpYXQiOjE2ODQ4NzUwNzd9.r44HyPpZWjGnW16q031jJmeZR2LolamVt7-qBJFsD08
 ###
 @objId1=646bb6339c1ac02e35e19755
 get {{base_URL}}/{{objId1}}
@@ -16,22 +17,24 @@ Content-Type: application/json
     "name": "vince", 
     "address": "hillesteenweg 18",
     "phone": "0485/784459",
-    "email": "vincevddddddddd@gmail.com",
-    "password": "vince123"
+    "email": "vincevdaaa@gmail.com",
+    "password": "vince123",
+    "isAdmin": false
 }
 
 ###
 @objId2=646bfa1d790e83f819c25345
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
-x-auth-token: eyJhbiOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZiZjkxODFjNGZkMjdlYTExZTJhMDYiLCJpYXQiOjE2ODQ4MDA3NTV9.IwYPe4plk_zdQHzjDxYefytCLpaTKtynbJn69BqA2nA
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMjZhZTY1NWU4YTZiY2QzOWFhOGUiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4NzQ5MjZ9.8o1SBwiiaorh51cYNWB8wW7ZLZW_rg3jNkVGh7drNMw
 
 {
     "name": "vince", 
-    "address": "hillesteenweg 19",
+    "address": "hilledsteenweg 19",
     "phone": "0485/784459",
-    "email": "vincevd@gmail.com",
-    "password": "vince123"
+    "email": "vincevdd@gmail.com",
+    "password": "vince123",
+    "isAdmin" : false
 }
 
 ###

@@ -2,6 +2,8 @@ const { Drink, validate } = require("../models/drink");
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
+const auth = require('../middleware/auth');
+const admin = require("../middleware/admin");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -12,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", [auth, admin],  async (req, res, next) => {
   try {
   } catch (err) {
     next(err);
@@ -30,7 +32,7 @@ router.post("/", async (req, res, next) => {
   res.send(drink);
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", [auth, admin], async (req, res, next) => {
   try {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -54,7 +56,7 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", [auth, admin], async (req, res, next) => {
   try {
     const drink = await Drink.findByIdAndRemove(req.params.id);
 
