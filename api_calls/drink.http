@@ -4,13 +4,14 @@
 get {{base_URL}}
 
 ###
-@objId1=646b4fa4472f1e1a52a464aa
+@objId1=646e6c68d35fb5cbb10530c1
 get {{base_URL}}/{{objId1}}
 Content-Type: application/json
 
 ###
 post {{base_URL}}
 Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
     "name": "Ice Tea", 
@@ -19,9 +20,10 @@ Content-Type: application/json
 }
 
 ###
-@objId2=646b4fa4472f1e1a52a464fe
+@objId2=646e6c68d35fb5cbb10530c1
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
     "name": "Cola", 
@@ -30,6 +32,7 @@ Content-Type: application/json
 }
 
 ###
-@objId3=646b4fa4472f1e1a52a464fe
+@objId3=646e6c68d35fb5cbb10530c1
 delete {{base_URL}}/{{objId3}}
 Content-Type: application/json  
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
