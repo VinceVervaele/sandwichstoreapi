@@ -103,3 +103,76 @@ Dit eindpunt gaat de customer gaan deleten met het id die meegegeven wordt in de
     "password": "Passwoord van de klant",
     "isAdmin": false
 ```
+
+## Drink
+Deze eindpunten stellen je in staat om met drinkgegevens te werken.
+
+### 1. Drinkgegevens ophalen
+#### GET /api/drinks
+
+Met deze eindpunt zullen we all dranken die in de database zitten gaan opvragen. 
+### 2. Nieuwe drink toevoegen
+#### POST /api/drinks
+
+Dit eindpunt zorgt ervoor dat we een drankje kunnen toevoegen aan de database.  Het vereist authenticatie en admin-bevoegdheden.
+
+#### Body
+```
+    "name": "Naam van de toegevoegde drank",
+    "price": "De prijs van de drank",
+    "amountInStock": "Het aantal in voorraad"
+```
+
+#### Response
+```
+    "_id": "drink_id",
+    "name": "Naam van de toegevoegde drank",
+    "price": "De prijs van de drank",
+    "amountInStock": "Het aantal in voorraad"
+```
+
+### 3. Drinkgegevens bijwerken
+#### PUT /api/drinks/:id
+
+Dit eindpunt werkt de gegevens van een bestaande drink bij. Het vereist ook authenticatie en admin-bevoegdheden. 
+
+#### Body
+```
+    "name": "Nieuwe naam",
+    "price": "Nieuwe prijs",
+    "amountInStock": "Nieuw aantal in voorraad"
+```
+
+#### Response
+```
+    "_id": "drink_id",
+    "name": "Nieuwe naam",
+    "price": "Nieuwe prijs",
+    "amountInStock": "Nieuw aantal in voorraad"
+```
+
+### 4. Drinkgegevens bijwerken
+#### DELETE /api/drinks/:id
+
+Dit eindpunt verwijdert een drink op basis van het opgegeven ID. Het vereist authenticatie en admin-bevoegdheden.
+
+#### Response
+```
+    "_id": "drink_id",
+    "name": "Naam van de verwijderde drank",
+    "price": "De prijs van de verwijderde drank",
+    "amountInStock": "Het aantal in voorraad"
+```
+
+### 5. Drink verwijderen
+#### GET /api/drinks/:id
+
+Dit eindpunt geeft de gegevens van een drink op basis van het opgegeven ID.
+
+#### Response
+```
+    "_id": "drink_id",
+    "name": "Naam van de toegevoegde drank",
+    "price": "De prijs van de drank",
+    "amountInStock": "Het aantal in voorraad"
+```
