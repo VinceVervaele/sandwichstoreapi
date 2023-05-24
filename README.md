@@ -7,6 +7,12 @@ Mijn API bevat 4 models
 - Sandwich
 - Drink
 
+## Base url
+
+De basis url van de website is https://broodjeszaak-api.herokuapp.com/
+
+# Routes
+
 ## Customer
 
 Dit zijn de eindpunten van customer. Hiermee gaan we customers aanmaken, gegevens van huidige customers aanpassen, customers deleten of gegevens gaan opvragen.
