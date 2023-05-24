@@ -73,19 +73,13 @@ router.put("/:id", auth, async (req, res, next) => {
   }
 });
 
-router.put("/:id/changeToAdmin",[auth, admin], async (req, res, next) => {
+router.put("/changeToAdmin/:id", [auth, admin], async (req, res, next) => {
   try {
-    const { error } = validate(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
-
-    const customer = await Customer.findById(req.params.id)
-     
+    const customer = await Customer.findById(req.params.id);
     if (!customer)
-      return res
-        .status(404)
-        .send("The customer with the given ID was not found.");
+      return res.status(404).send("The customer with the given ID was not found.");
 
-    customer.isAdmin = true;
+    customer.isAdmin = req.body.isAdmin || false;
     await customer.save();
     res.send(customer);
   } catch (err) {
