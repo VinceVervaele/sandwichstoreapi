@@ -4,14 +4,15 @@ const { Customer} = require("../models/customer");
 const { Sandwich} = require("../models/sandwich");
 const app = require("../index");
 
-process.env.NODE_ENV = 'test';
 //admin auth
 let adminAuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5MjQyMDV9.1CiHpA-KXoA6VaX2Ycov5-WaWdkBQmV-MI3lta4CwW4";
 //reular user auth
 let regularUserAuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlMDliMWNkOGZhMDMyNmI2N2Q4ODQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0OTMzMDQxfQ.DCw6eGy7loLrk2CzVW1NdVYv6ugiPCYkT2X0zQGv3Hs";
+
+
+// -------------------------------- CUSTOMER --------------------------------------
 //declaratie van customerId zodat we dit global kunnen gebruiken
 let customerId
-let sandwichId
 
 describe("GET /api/customers", () => {
   it('should retrieve all customers', async () => {
@@ -173,6 +174,9 @@ describe("DELETE /api/customers/:id", () => {
   });
 });
 
+// ---------------------------------------- SANDWICH ----------------------------------------
+//declaratie van sandwichId zodat we dit global kunnen gebruiken
+let sandwichId
 
 describe('GET /api/sandwiches', () => {
   it('should return all sandwiches', async () => {
@@ -183,7 +187,7 @@ describe('GET /api/sandwiches', () => {
 });
 
 describe('POST /api/sandwiches', () => {
-  it('should create a new sandwich', async () => {
+  it('create a new sandwich', async () => {
     const sandwichData = {
       name: 'Ham and Cheese',
       price: 5.99,
@@ -202,10 +206,25 @@ describe('POST /api/sandwiches', () => {
     expect(response.body.price).toBe(sandwichData.price);
     expect(response.body.ingredients).toEqual(sandwichData.ingredients);
   });
+
+  it('create a new sandwich -> no admin', async () => {
+    const sandwichData = {
+      name: 'Ham and Cheese',
+      price: 5.99,
+      ingredients: ['ham', 'cheese'],
+    };
+
+    const response = await request(app)
+      .post('/api/sandwiches')
+      .set('x-auth-token', regularUserAuthToken)
+      .send(sandwichData);
+  
+    expect(response.status).toBe(403);
+  });
 });
 
 describe('PUT /api/sandwiches/:id', () => {
-  it('should update a sandwich by ID', async () => {
+  it('update a sandwich by ID', async () => {
     const updatedData = {
       name: 'Ham and Swiss',
       price: 7.99,
@@ -223,10 +242,25 @@ describe('PUT /api/sandwiches/:id', () => {
     expect(response.body.price).toBe(response.body.price);
     expect(response.body.ingredients).toEqual(response.body.ingredients);
   });
+
+  it('update a sandwich by ID -> no admin', async () => {
+    const updatedData = {
+      name: 'Ham and Swiss',
+      price: 7.99,
+      ingredients: ['ham', 'swiss'],
+    };
+
+    const response = await request(app)
+      .put(`/api/sandwiches/${sandwichId}`)
+      .set('x-auth-token', regularUserAuthToken)
+      .send(updatedData);
+
+    expect(response.status).toBe(403);
+  });
 });
 
 describe('GET /api/sandwiches/:id', () => {
-  it('should get a sandwich by ID', async () => {  
+  it('get sandwich by ID', async () => {  
     const response = await request(app)
     .get(`/api/sandwiches/${sandwichId}`
     );
@@ -237,14 +271,30 @@ describe('GET /api/sandwiches/:id', () => {
     expect(response.body.price).toBe(sandwich.price);
     expect(response.body.ingredients).toEqual(sandwich.ingredients);
   });
+
+  it('get sandwich by ID -> invalid id', async () => {  
+    const response = await request(app)
+    .get(`/api/sandwiches/test`
+    );
+    const sandwich = await Sandwich.findById(sandwichId);
+    expect(response.status).toBe(500);
+  });
 });
 
 describe('DELETE /api/sandwiches/:id', () => {
-  it('should delete a sandwich by ID', async () => {
+  it('delete sandwich by id', async () => {
      const response = await request(app)
      .delete(`/api/sandwiches/${sandwichId}`)
      .set('x-auth-token', adminAuthToken);
 
     expect(response.status).toBe(200);
   });
+
+  it('delete sandwich by id -> no admin', async () => {
+    const response = await request(app)
+    .delete(`/api/sandwiches/${sandwichId}`)
+    .set('x-auth-token', regularUserAuthToken);
+
+   expect(response.status).toBe(403);
+ });
 });
