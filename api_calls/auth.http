@@ -5,6 +5,6 @@ post {{base_URL}}
 Content-Type: application/json
 
 {
-    "email": "vince123@gmail.com",
+    "email": "vincevddbaddad@gmail.com",
     "password": "vince123"
 }

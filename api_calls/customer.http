@@ -17,7 +17,7 @@ Content-Type: application/json
     "name": "vince", 
     "address": "hillesteenweg 18",
     "phone": "0485/784459",
-    "email": "vince123@gmail.com",
+    "email": "vince1234@gmail.com",
     "password": "vince123"
 }
 
@@ -37,20 +37,17 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGVkMDQ2MzhhM
 
 ###
 
-@objId2=646d4ef74638a3749a186169
+@objId2=646d544fa91bdfc2dba85102
 put {{base_URL}}/changeToAdmin/{{objId2}}
 Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
-    "name": "vince", 
-    "address": "hilledsteenweg 19",
-    "phone": "0485/784459",
-    "email": "vincevdd@gmail.com",
-    "password": "vince123"
+    "isAdmin": true
 }
 
 ###
 @objId3=646bb6339c1ac02e35e19755
 delete {{base_URL}}/{{objId3}}
 Content-Type: application/json  
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlMDliMWNkOGZhMDMyNmI2N2Q4ODQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0OTMzMDQxfQ.DCw6eGy7loLrk2CzVW1NdVYv6ugiPCYkT2X0zQGv3Hs
