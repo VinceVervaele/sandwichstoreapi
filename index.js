@@ -14,6 +14,10 @@ mongoose.connect(process.env.connectionString)
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 
+
+app.get("/" ,(req,res) => {
+  res.send("Welkom op de broodjeszaak-api")
+})
 app.use(express.json());
 app.use('/api/customers', customers);
 app.use('/api/sandwiches', sandwiches);
