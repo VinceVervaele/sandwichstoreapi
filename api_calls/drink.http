@@ -1,10 +1,10 @@
 # CUSTOMERS CALLS #
-@base_URL=http://localhost:3000/api/drinks
+@base_URL=http://localhost:5000/api/drinks
 
 get {{base_URL}}
 
 ###
-@objId1=646b4fa4472f1e1a52a464fe
+@objId1=646b4fa4472f1e1a52a464aa
 get {{base_URL}}/{{objId1}}
 Content-Type: application/json
 

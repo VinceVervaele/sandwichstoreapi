@@ -159,7 +159,7 @@ describe("PUT /api/customers/:id/isAdmin", () => {
 });
 
 describe('GET /api/customers/:id', () => {
-  it('should get a customer by ID', async () => {  
+  it('update customer by ID', async () => {  
     const response = await request(app)
     .get(`/api/customers/${customerId}`)
     .set('x-auth-token', adminAuthToken);
@@ -295,8 +295,7 @@ describe('GET /api/sandwiches/:id', () => {
     const response = await request(app)
     .get(`/api/sandwiches/test`
     );
-    const sandwich = await Sandwich.findById(sandwichId);
-    expect(response.status).toBe(500);
+    expect(response.status).toBe(400);
   });
 });
 
@@ -374,8 +373,6 @@ describe('POST /api/orders', () => {
     expect(response.body.customer._id).toBe(customer._id.toString());
     expect(response.body.sandwiches[0]._id).toBe(sandwich._id.toString());
     expect(response.body.drinks[0]._id).toBe(drink._id.toString());
-
-    Order.findByIdAndDelete(response.body._id);
   });
 });
 
@@ -392,6 +389,8 @@ describe('GET /api/orders/:id', () => {
     expect(response.body.customer._id).toBe(order.customer._id.toString());
     expect(response.body.sandwiches[0]._id).toBe(order.sandwiches[0]._id.toString());
     expect(response.body.drinks[0]._id).toBe(order.drinks[0]._id.toString());
+
+    await Order.findByIdAndDelete(response.body._id);
   });
 
   it('get order by ID -> invalid ID', async () => {
@@ -399,7 +398,133 @@ describe('GET /api/orders/:id', () => {
       .get('/api/orders/invalid-id')
       .set('x-auth-token', adminAuthToken);
 
-    expect(response.status).toBe(500);
+    expect(response.status).toBe(400);
     
+  });
+});
+// ------------------------------------------------------------- DRINK ---------------------------------------------------
+let drinkId;
+describe('GET /api/drinks', () => {
+  it('get all drinks', async () => {
+    const response = await request(app)
+      .get('/api/drinks')
+      .set('x-auth-token', adminAuthToken);
+
+    expect(response.status).toBe(200);
+  });
+});
+
+describe('POST /api/drinks', () => {
+  it('create a new drink', async () => {
+    const drinkData = {
+      name: 'New Drink',
+      price: 2.99,
+      amountInStock: 5
+    };
+
+    const response = await request(app)
+      .post('/api/drinks')
+      .set('x-auth-token', adminAuthToken)
+      .send(drinkData);
+    drinkId = response.body._id;
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body.name).toBe(drinkData.name);
+    expect(response.body.price).toBe(drinkData.price);
+    expect(response.body.amountInStock).toBe(drinkData.amountInStock);
+  });
+});
+
+describe('GET /api/drinks/:id', () => {
+  it('get drink by ID', async () => {
+
+    const response = await request(app)
+      .get(`/api/drinks/${drinkId}`)
+      .set('x-auth-token', adminAuthToken);
+
+    const drink = await Drink.findById(drinkId)
+    
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body.name).toBe(drink.name);
+    expect(response.body.price).toBe(drink.price);
+    expect(response.body.amountInStock).toBe(drink.amountInStock);
+  });
+
+  it('get drink by ID -> invalid id', async () => {
+    const response = await request(app)
+      .get('/api/drinks/test');
+
+    expect(response.status).toBe(400);
+  });
+});
+
+describe('PUT /api/drinks/:id', () => {
+  it('should update drink by ID', async () => {
+    const newDrink = new Drink({
+      name: 'New Drink',
+      price: 2.99,
+      amountInStock: 5
+    });
+    await newDrink.save();
+
+    const updatedDrinkData = {
+      name: 'Updated Drink',
+      price: 3.99,
+      amountInStock: 10
+    };
+
+    const response = await request(app)
+      .put(`/api/drinks/${newDrink._id}`)
+      .set('x-auth-token', adminAuthToken)
+      .send(updatedDrinkData);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body.name).toBe(updatedDrinkData.name);
+    expect(response.body.price).toBe(updatedDrinkData.price);
+    expect(response.body.amountInStock).toBe(updatedDrinkData.amountInStock);
+
+    await Drink.findByIdAndDelete(newDrink._id);
+  });
+
+  it('get drink ID -> invalid ID', async () => {
+    const response = await request(app)
+      .put('/api/drinks/testt')
+      .set('x-auth-token', adminAuthToken);
+
+    expect(response.status).toBe(400);
+  });
+});
+
+describe('DELETE /api/drinks/:id', () => {
+  it('delete drink by id', async () => {
+    const newDrink = new Drink({
+      name: 'New Drink',
+      price: 2.99,
+      amountInStock: 5
+    });
+    await newDrink.save();
+
+    const response = await request(app)
+      .delete(`/api/drinks/${newDrink._id}`)
+      .set('x-auth-token', adminAuthToken);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body.name).toBe(newDrink.name);
+    expect(response.body.price).toBe(newDrink.price);
+    expect(response.body.amountInStock).toBe(newDrink.amountInStock);
+
+    const deletedDrink = await Drink.findById(newDrink._id);
+    expect(deletedDrink).toBeNull();
+  });
+
+  it('delete drink by id -> invalid ID', async () => {
+    const response = await request(app)
+      .delete('/api/drinks/invalid-id')
+      .set('x-auth-token', adminAuthToken);
+
+    expect(response.status).toBe(400);
   });
 });

@@ -47,6 +47,10 @@ router.post("/", async (req, res, next) => {
 
 router.put("/:id", auth, async (req, res, next) => {
   try {
+    const isValidId = mongoose.isValidObjectId(req.params.id);
+    if (!isValidId)
+      return res.status(400).send("Invalid drink ID.");
+
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -75,6 +79,10 @@ router.put("/:id", auth, async (req, res, next) => {
 
 router.put("/changeToAdmin/:id", [auth, admin], async (req, res, next) => {
   try {
+    const isValidId = mongoose.isValidObjectId(req.params.id);
+    if (!isValidId)
+      return res.status(400).send("Invalid drink ID.");
+
     const customer = await Customer.findById(req.params.id);
     if (!customer)
       return res.status(404).send("The customer with the given ID was not found.");
@@ -89,6 +97,10 @@ router.put("/changeToAdmin/:id", [auth, admin], async (req, res, next) => {
 
 router.delete("/:id", [auth, admin], async (req, res, next) => {
   try {
+    const isValidId = mongoose.isValidObjectId(req.params.id);
+    if (!isValidId)
+      return res.status(400).send("Invalid drink ID.");
+
     const customer = await Customer.findByIdAndRemove(req.params.id);
 
     if (!customer)
@@ -104,6 +116,10 @@ router.delete("/:id", [auth, admin], async (req, res, next) => {
 
 router.get("/:id", [auth, admin], async (req, res, next) => {
   try {
+    const isValidId = mongoose.isValidObjectId(req.params.id);
+    if (!isValidId)
+      return res.status(400).send("Invalid drink ID.");
+
     const customer = await Customer.findById(req.params.id);
 
     if (!customer)
