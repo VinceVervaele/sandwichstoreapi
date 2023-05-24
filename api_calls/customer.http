@@ -3,7 +3,7 @@
 
 
 get {{base_URL}}
-x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGNkMWZmODJlMzEyMWQ0M2IzYmYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0ODg0Njg5fQ.FbUqOk8kCUkrMWWO0upGowajITrBy2R6IvM6iFW0n9A
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5MjQyMDV9.1CiHpA-KXoA6VaX2Ycov5-WaWdkBQmV-MI3lta4CwW4
 ###
 @objId1=646bb6339c1ac02e35e19755
 get {{base_URL}}/{{objId1}}

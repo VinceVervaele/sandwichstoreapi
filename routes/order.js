@@ -8,7 +8,7 @@ const auth = require('../middleware/auth');
 const admin = require("../middleware/admin");
 const router = express.Router();
 
-router.get("/", auth, async (req, res, next) => {
+router.get("/", [auth, admin], async (req, res, next) => {
   try {
     const orders = await Order.find().sort("name");
     res.send(orders);
@@ -64,7 +64,7 @@ router.post("/", auth, async (req, res, next) => {
   }
 });
 
-router.get("/:id", auth, async (req, res, next) => {
+router.get("/:id", [auth, admin], async (req, res, next) => {
   try {
     const isValidId = mongoose.isValidObjectId(req.params.id);
     if (!isValidId)
