@@ -1,9 +1,9 @@
 # CUSTOMERS CALLS #
-@base_URL=http://localhost:3000/api/customers
+@base_URL=http://localhost:5000/api/customers
 
 
 get {{base_URL}}
-x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMjc0NTY0NTMyZDc0MTJjZjRkYmMiLCJpYXQiOjE2ODQ4NzUwNzd9.r44HyPpZWjGnW16q031jJmeZR2LolamVt7-qBJFsD08
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGNkMWZmODJlMzEyMWQ0M2IzYmYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0ODg0Njg5fQ.FbUqOk8kCUkrMWWO0upGowajITrBy2R6IvM6iFW0n9A
 ###
 @objId1=646bb6339c1ac02e35e19755
 get {{base_URL}}/{{objId1}}
@@ -17,15 +17,30 @@ Content-Type: application/json
     "name": "vince", 
     "address": "hillesteenweg 18",
     "phone": "0485/784459",
-    "email": "vincevdba@gmail.com",
+    "email": "vince123@gmail.com",
     "password": "vince123"
 }
 
 ###
-@objId2=646bfa1d790e83f819c25345
+@objId2=646d4ef74638a3749a186169
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMjZhZTY1NWU4YTZiY2QzOWFhOGUiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4NzQ5MjZ9.8o1SBwiiaorh51cYNWB8wW7ZLZW_rg3jNkVGh7drNMw
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGVkMDQ2MzhhMzc0OWExODYxNjIiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0ODg1MjAxfQ.LLpI8tehGutqxHfIYOQ4dgKOUUVpHNPdGcI8on2wr5E
+
+{
+    "name": "vidddnce", 
+    "address": "hilledsteenweg 19",
+    "phone": "0485/784459",
+    "email": "vincevddd@gmail.com",
+    "password": "vince123"
+}
+
+###
+
+@objId2=646d4ef74638a3749a186169
+put {{base_URL}}/{{objId2}}/changeToAdmin
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
     "name": "vince", 
@@ -33,22 +48,6 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMjZhZTY1NWU4Y
     "phone": "0485/784459",
     "email": "vincevdd@gmail.com",
     "password": "vince123"
-}
-
-###
-
-@objId2=646d260225c60830dc9416c7
-put {{base_URL}}/{{objId2}}/isAdmin
-Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkMmMwMDY1M2RlYTM3NTk1YzY2ZDUiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0ODc2Mjg4fQ.sX0hTrkFFy4gA_XGaY3OUroZjgT3ndnOVK3rwK_Rqhc
-
-{
-    "name": "vince", 
-    "address": "hilledsteenweg 19",
-    "phone": "0485/784459",
-    "email": "vincevdd@gmail.com",
-    "password": "vince123",
-    "isAdmin": false
 }
 
 ###

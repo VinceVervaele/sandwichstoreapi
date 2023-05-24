@@ -1,10 +1,10 @@
-@base_URL=http://localhost:3000/api/auth
+@base_URL=http://localhost:5000/api/auth
 
 ###
 post {{base_URL}}
 Content-Type: application/json
 
 {
-    "email": "vincevd@gmail.com",
+    "email": "vince123@gmail.com",
     "password": "vince123"
 }
