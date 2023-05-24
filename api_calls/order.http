@@ -1,5 +1,5 @@
 # CUSTOMERS CALLS #
-@base_URL=http://localhost:3000/api/orders
+@base_URL=http://localhost:5000/api/orders
 
 get {{base_URL}}
 
@@ -11,9 +11,10 @@ Content-Type: application/json
 ###
 post {{base_URL}}
 Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
-    "sandwiches": ["646b4f90472f1e1a52a464f8", "646b4f94472f1e1a52a464fa"], 
+    "sandwiches": ["646e3cf8b072cef9146ae2ba"], 
     "drinks": ["646b53eb463ea788fabcf01d", "646b53ee463ea788fabcf01f"],
     "customer": "646b53de463ea788fabcf015",
     "deliverDate": "2023/5/23"

@@ -1,7 +1,10 @@
 const request = require('supertest');
+const mongoose = require('mongoose');
 require('dotenv').config();
 const { Customer} = require("../models/customer");
 const { Sandwich} = require("../models/sandwich");
+const { Order } = require("../models/order");
+const { Drink } = require("../models/drink");
 const app = require("../index");
 
 //admin auth
@@ -15,14 +18,14 @@ let regularUserAuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZ
 let customerId
 
 describe("GET /api/customers", () => {
-  it('should retrieve all customers', async () => {
+  it('get all customers', async () => {
     const response = await request(app).get('/api/customers')
     .set('x-auth-token', adminAuthToken);
 
     expect(response.status).toBe(200);
   });
 
-  it('should not retrieve all customers because user is not a admin', async () => {
+  it('get all customers -> no admin', async () => {
     const response = await request(app)
     .get('/api/customers')
     .set('x-auth-token', regularUserAuthToken);
@@ -32,7 +35,7 @@ describe("GET /api/customers", () => {
 });
 
 describe("POST /api/customers", () => {
-  it('should create a new customer', async () => {
+  it('create a new customer', async () => {
     customerData = {
       name: 'John Doe',
       address: '123 Main St',
@@ -54,7 +57,7 @@ describe("POST /api/customers", () => {
     expect(response.body.email).toBe(customerData.email);
   });
 
-  it('should not create a new customer because not all fields are given in the body', async () => {
+  it('create a new customer -> not all required fiels in body', async () => {
     customerData = {
       name: 'John Doe',
       address: '123 Main St',
@@ -71,7 +74,7 @@ describe("POST /api/customers", () => {
 });
 
 describe("PUT /api/customers/:id", () => {
-  it('should update a customer by ID', async () => {
+  it('update a customer by ID admintoken', async () => {
     const updatedCustomerData = {
       name: 'Vince',
       address: '123 Main St',
@@ -89,7 +92,7 @@ describe("PUT /api/customers/:id", () => {
     expect(response.body.name).toBe(updatedCustomerData.name);
   });
 
-  it('should update a customer by ID', async () => {
+  it('should update a customer by ID regulartoken', async () => {
     const updatedCustomerData = {
       name: 'VinceTest',
       address: '123 Main St',
@@ -105,6 +108,22 @@ describe("PUT /api/customers/:id", () => {
 
     expect(response.status).toBe(200);
     expect(response.body.name).toBe(updatedCustomerData.name);
+  });
+  it('should update a customer by ID -> invalid token', async () => {
+    const updatedCustomerData = {
+      name: 'VinceTest',
+      address: '123 Main St',
+      phone: '555-1234',
+      email: 'testput@test.com',
+      password: 'password123',
+    };
+
+    const response = await request(app)
+      .put(`/api/customers/${customerId}`)
+      .set('x-auth-token', "test123") 
+      .send(updatedCustomerData);
+
+    expect(response.status).toBe(400);
   });
 
 });
@@ -157,7 +176,7 @@ describe('GET /api/customers/:id', () => {
 });
 
 describe("DELETE /api/customers/:id", () => {
-  it('should delete a customer by ID', async () => {
+  it(' delete a customer by ID', async () => {
     const deleteResponse = await request(app)
     .delete(`/api/customers/${customerId}`)
     .set('x-auth-token', adminAuthToken);
@@ -165,7 +184,7 @@ describe("DELETE /api/customers/:id", () => {
     expect(deleteResponse.status).toBe(200);
   });
 
-  it('should not delete a customer by ID because user is not a admin', async () => {
+  it('delete a customer by ID -> no admin', async () => {
     const deleteResponse = await request(app)
     .delete(`/api/customers/${customerId}`)
     .set('x-auth-token', regularUserAuthToken);
@@ -179,7 +198,7 @@ describe("DELETE /api/customers/:id", () => {
 let sandwichId
 
 describe('GET /api/sandwiches', () => {
-  it('should return all sandwiches', async () => {
+  it('getall sandwiches', async () => {
     const response = await request(app)
     .get('/api/sandwiches');
     expect(response.status).toBe(200);
@@ -297,4 +316,90 @@ describe('DELETE /api/sandwiches/:id', () => {
 
    expect(response.status).toBe(403);
  });
+});
+
+// ------------------------------- ORDER -----------------------------------------------
+let orderId;
+
+describe('GET /api/orders', () => {
+  it('get all orders', async () => {
+    const response = await request(app)
+      .get('/api/orders')
+      .set('x-auth-token', adminAuthToken);
+
+    expect(response.status).toBe(200);
+  });
+});
+
+describe('POST /api/orders', () => {
+  it('create a new order', async () => {
+    const customer = new Customer({
+      name: 'John Doe',
+      phone: '555-1234',
+      address: "test 12",
+      email: 'johndoe@test.com',
+      password: 'password123',
+    });
+    await customer.save();
+
+    const sandwich = new Sandwich({
+      name: 'Ham and Cheese',
+      price: 5.99,
+      ingredients: ['ham', 'cheese'],
+    });
+    await sandwich.save();
+
+    const drink = new Drink({
+      name: 'Coke',
+      price: 1.99,
+      amountInStock: 10,
+    });
+    await drink.save();
+
+    const orderData = {
+      customer: customer._id,
+      sandwiches: [sandwich._id],
+      drinks: [drink._id],
+      deliverDate: Date.now(),
+    };
+
+    const response = await request(app)
+      .post('/api/orders')
+      .set('x-auth-token', adminAuthToken)
+      .send(orderData);
+  
+    orderId = response.body._id;
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body.customer._id).toBe(customer._id.toString());
+    expect(response.body.sandwiches[0]._id).toBe(sandwich._id.toString());
+    expect(response.body.drinks[0]._id).toBe(drink._id.toString());
+
+    Order.findByIdAndDelete(response.body._id);
+  });
+});
+
+describe('GET /api/orders/:id', () => {
+  it('get order by ID', async () => {
+    const response = await request(app)
+      .get(`/api/orders/${orderId}`)
+      .set('x-auth-token', adminAuthToken);
+
+    const order = await Order.findById(orderId);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('_id');
+    expect(response.body.customer._id).toBe(order.customer._id.toString());
+    expect(response.body.sandwiches[0]._id).toBe(order.sandwiches[0]._id.toString());
+    expect(response.body.drinks[0]._id).toBe(order.drinks[0]._id.toString());
+  });
+
+  it('get order by ID -> invalid ID', async () => {
+    const response = await request(app)
+      .get('/api/orders/invalid-id')
+      .set('x-auth-token', adminAuthToken);
+
+    expect(response.status).toBe(500);
+    
+  });
 });

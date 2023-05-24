@@ -42,11 +42,13 @@ router.post("/", auth, async (req, res, next) => {
         phone: retrievedCustomer.phone,
       },
       sandwiches: retrievedSandwiches.map((sandwich) => ({
+        _id: sandwich._id, 
         name: sandwich.name,
         price: sandwich.price,
         ingredients: sandwich.ingredients,
       })),
       drinks: retrievedDrinks.map((drink) => ({
+        _id: drink._id, 
         name: drink.name,
         price: drink.price,
         amountInStock: drink.amountInStock,
