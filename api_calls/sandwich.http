@@ -4,7 +4,7 @@
 get {{base_URL}}
 
 ###
-@objId1=646bb67fe0e6b6f96dfad6a6
+@objId1=646e6cfad35fb5cbb10530cc
 get {{base_URL}}/{{objId1}}
 Content-Type: application/json
 
@@ -20,9 +20,10 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhM
 }
 
 ###
-@objId2=646bb67fe0e6b6f96dfad6a6
+@objId2=646e6cfad35fb5cbb10530cc
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
     "name": "Broodje garnaalsalade",
@@ -37,6 +38,7 @@ Content-Type: application/json
 }
 
 ###
-@objId3=646bb67fe0e6b6f96dfad6a6
+@objId3=646e6cfad35fb5cbb10530cc
 delete {{base_URL}}/{{objId3}}
 Content-Type: application/json  
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI

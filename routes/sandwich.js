@@ -36,7 +36,7 @@ router.put("/:id", [auth, admin] , async (req, res, next) => {
   try {
     const isValidId = mongoose.isValidObjectId(req.params.id);
     if (!isValidId)
-      return res.status(400).send("Invalid drink ID.");
+      return res.status(400).send("Invalid sandwich ID.");
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -65,7 +65,7 @@ router.delete("/:id", [auth, admin],  async (req, res, next) => {
   try {
     const isValidId = mongoose.isValidObjectId(req.params.id);
     if (!isValidId)
-      return res.status(400).send("Invalid drink ID.");
+      return res.status(400).send("Invalid sandwich ID.");
     const sandwich = await Sandwich.findByIdAndRemove(req.params.id);
 
     if (!sandwich)
@@ -83,7 +83,7 @@ router.get("/:id",  async (req, res, next) => {
   try {
     const isValidId = mongoose.isValidObjectId(req.params.id);
     if (!isValidId)
-      return res.status(400).send("Invalid drink ID.");
+      return res.status(400).send("Invalid sandwich ID.");
     const sandwich = await Sandwich.findById(req.params.id);
 
     if (!sandwich)

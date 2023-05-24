@@ -3,32 +3,32 @@
 
 
 get {{base_URL}}
-x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5MjQyMDV9.1CiHpA-KXoA6VaX2Ycov5-WaWdkBQmV-MI3lta4CwW4
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlNjgxNmFkMmM2ZDM4ODgzMjNiNTgiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5NTcyNDB9.muB-RKdYiNAyb-j-XEiZ5WZermRSml8wN9HH0SaS-_8
 ###
-@objId1=646bb6339c1ac02e35e19755
+@objId1=646e6816ad2c6d3888323b58
 get {{base_URL}}/{{objId1}}
 Content-Type: application/json
-
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlNjgxNmFkMmM2ZDM4ODgzMjNiNTgiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5NTcyNDB9.muB-RKdYiNAyb-j-XEiZ5WZermRSml8wN9HH0SaS-_8
 ###
 post {{base_URL}}
 Content-Type: application/json
 
 {
-    "name": "vince", 
+    "name": "admin", 
     "address": "hillesteenweg 18",
     "phone": "0485/784459",
-    "email": "vince1234@gmail.com",
-    "password": "vince123"
+    "email": "admin2@gmail.com",
+    "password": "admin123"
 }
 
 ###
-@objId2=646d4ef74638a3749a186169
+@objId2=646e68f6ad2c6d3888323b66
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGVkMDQ2MzhhMzc0OWExODYxNjIiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0ODg1MjAxfQ.LLpI8tehGutqxHfIYOQ4dgKOUUVpHNPdGcI8on2wr5E
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlNjgxNmFkMmM2ZDM4ODgzMjNiNTgiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5NTcyNDB9.muB-RKdYiNAyb-j-XEiZ5WZermRSml8wN9HH0SaS-_8
 
 {
-    "name": "vidddnce", 
+    "name": "test1", 
     "address": "hilledsteenweg 19",
     "phone": "0485/784459",
     "email": "vincevddd@gmail.com",
@@ -37,7 +37,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGVkMDQ2MzhhM
 
 ###
 
-@objId2=646d544fa91bdfc2dba85102
+@objId2=646e68f6ad2c6d3888323b66
 put {{base_URL}}/changeToAdmin/{{objId2}}
 Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI

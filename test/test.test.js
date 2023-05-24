@@ -7,9 +7,9 @@ const { Order } = require("../models/order");
 const { Drink } = require("../models/drink");
 const app = require("../index");
 
-//admin auth
+//admin auth, deze kan gemaakt worden via auth.http als u de user naar admin verandert via de database
 let adminAuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5MjQyMDV9.1CiHpA-KXoA6VaX2Ycov5-WaWdkBQmV-MI3lta4CwW4";
-//reular user auth
+//regular user auth
 let regularUserAuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlMDliMWNkOGZhMDMyNmI2N2Q4ODQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjg0OTMzMDQxfQ.DCw6eGy7loLrk2CzVW1NdVYv6ugiPCYkT2X0zQGv3Hs";
 
 

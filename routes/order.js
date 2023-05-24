@@ -68,7 +68,7 @@ router.get("/:id", [auth, admin], async (req, res, next) => {
   try {
     const isValidId = mongoose.isValidObjectId(req.params.id);
     if (!isValidId)
-      return res.status(400).send("Invalid drink ID.");
+      return res.status(400).send("Invalid order ID.");
     const order = await Order.findById(req.params.id);
 
     if (!order)
