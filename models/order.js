@@ -10,16 +10,30 @@ const Order = mongoose.model('Order', new mongoose.Schema({
         minlength: 5,
         maxlength: 50
       },
-      isGold: {
-        type: Boolean,
-        default: false
+      address: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 125
       },
       phone: {
         type: String,
         required: true,
         minlength: 5,
         maxlength: 50
-      }      
+      },
+      email:{
+        type: String,
+        required: true,
+        minlength: 6,
+        maxlength: 125
+      },
+      password: {
+        type: String,
+        required: true,
+        minlength: 8,
+        maxlength: 250
+      }    
     }),  
     required: true
   },

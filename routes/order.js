@@ -40,6 +40,9 @@ router.post("/", auth, async (req, res, next) => {
         _id: retrievedCustomer._id,
         name: retrievedCustomer.name,
         phone: retrievedCustomer.phone,
+        address: retrievedCustomer.address,
+        password: retrievedCustomer.password,
+        email: retrievedCustomer.email
       },
       sandwiches: retrievedSandwiches.map((sandwich) => ({
         _id: sandwich._id, 
