@@ -14,8 +14,8 @@ Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
-    "name": "Ice Tea", 
-    "price": 4.99,
+    "name": "Red bull", 
+    "price": 3.99,
     "amountInStock": 12
 }
 

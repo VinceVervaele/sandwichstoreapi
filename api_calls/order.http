@@ -16,8 +16,8 @@ Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
-    "sandwiches": ["646e3cf8b072cef9146ae2ba"], 
-    "drinks": ["646b53eb463ea788fabcf01d", "646b53ee463ea788fabcf01f"],
-    "customer": "646e3886513f6f4fdcf443ab",
+    "sandwiches": ["646e6f83fbfb81fe8e1b5141"], 
+    "drinks": ["646e6f83fbfb81fe8e1b5143", "646e6f84fbfb81fe8e1b5157"],
+    "customer": "6477ad3466a3bac4873110c9",
     "deliverDate": "2023/5/23"
 }

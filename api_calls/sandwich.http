@@ -14,9 +14,9 @@ Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
-    "name": "Baguette", 
-    "price": 18,
-    "ingredients": ["Garnaalsalade", "Sla", "Ei", "Tomaat"]
+    "name": "Broodje Smos", 
+    "price": 3.99,
+    "ingredients": ["Kaas", "Hesp", "Sla", "Ei", "Tomaat", "Mayonaise"]
 }
 
 ###
