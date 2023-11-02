@@ -1,11 +1,10 @@
-# CUSTOMERS CALLS #
 @base_URL=http://localhost:5000/api/customers
 
 
 get {{base_URL}}
-x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlNjgxNmFkMmM2ZDM4ODgzMjNiNTgiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5NTcyNDB9.muB-RKdYiNAyb-j-XEiZ5WZermRSml8wN9HH0SaS-_8
+x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3YWQzNDY2YTNiYWM0ODczMTEwYzkiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODU2MDc1NTF9.5OgYo0DUMnx9j7hhK8tDfnjAg6Zw16Txx_3fe5v_ogg
 ###
-@objId1=646e6816ad2c6d3888323b58
+@objId1=6477ad5d66a3bac4873110d2
 get {{base_URL}}/{{objId1}}
 Content-Type: application/json
 x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlNjgxNmFkMmM2ZDM4ODgzMjNiNTgiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5NTcyNDB9.muB-RKdYiNAyb-j-XEiZ5WZermRSml8wN9HH0SaS-_8
@@ -17,18 +16,19 @@ Content-Type: application/json
     "name": "admin", 
     "address": "hillesteenweg 18",
     "phone": "0485/784459",
-    "email": "admin3@gmail.com",
-    "password": "admin123"
+    "email": "admin13@gmail.com",
+    "password": "admin123",
+    "isAdmin": true
 }
 
 ###
-@objId2=646e68f6ad2c6d3888323b66
+@objId2=6477afa5d61f7e400b7cfc21
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlNjgxNmFkMmM2ZDM4ODgzMjNiNTgiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ5NTcyNDB9.muB-RKdYiNAyb-j-XEiZ5WZermRSml8wN9HH0SaS-_8
 
 {
-    "name": "test1", 
+    "name": "vince", 
     "address": "hilledsteenweg 19",
     "phone": "0485/784459",
     "email": "vincevddd@gmail.com",
@@ -37,7 +37,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZlNjgxNmFkMmM2Z
 
 ###
 
-@objId2=646e68f6ad2c6d3888323b66
+@objId2=6477afa5d61f7e400b7cfc21
 put {{base_URL}}/changeToAdmin/{{objId2}}
 Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI

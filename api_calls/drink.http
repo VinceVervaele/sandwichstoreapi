@@ -1,4 +1,3 @@
-# CUSTOMERS CALLS #
 @base_URL=http://localhost:5000/api/drinks
 
 get {{base_URL}}
@@ -20,13 +19,13 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhM
 }
 
 ###
-@objId2=646e6c68d35fb5cbb10530c1
+@objId2=6477b0509cdeff8d18c6a4ff
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
-    "name": "Cola", 
+    "name": "Red bull", 
     "price": 2.99,
     "amountInStock": 2
 }

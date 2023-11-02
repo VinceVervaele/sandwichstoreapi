@@ -1,4 +1,3 @@
-# CUSTOMERS CALLS #
 @base_URL=http://localhost:5000/api/sandwiches
 
 get {{base_URL}}
@@ -20,21 +19,21 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhM
 }
 
 ###
-@objId2=646e6cfad35fb5cbb10530cc
+@objId2=6477b0a99cdeff8d18c6a505
 put {{base_URL}}/{{objId2}}
 Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZkNGZhNDQ2MzhhMzc0OWExODYxNzIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODQ4ODU0NjJ9.Ihp_v0JkcwQHDCybTIUOdWLvO-LB6BsPdYgo9lL83yI
 
 {
-    "name": "Broodje garnaalsalade",
+    "name": "Broodje salami",
     "price": "6.45",
-    "ingredients": [
-    "Garnaalsalade",
-    "Sla",
-    "Ei",
-    "Tomaat",
-    "Kaas"
-  ]
+    "ingredients":  [
+      "Salami pikant",
+      "Sla",
+      "Ei",
+      "Tomaat",
+      "Mayonaise"
+    ]
 }
 
 ###
